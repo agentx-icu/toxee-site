@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found — toxee</title>
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#070b14">
+<meta name="theme-color" content="#f4f6fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070b14" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="/assets/img/app_icon.png">
 <!-- GitHub Pages serves this for every missing path, at any depth, so links are absolute. -->
 <style>
@@ -20,6 +21,10 @@
   nav { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
   a { color: #67e8f9; font-weight: 600; border: 1px solid rgba(148, 163, 184, .28); border-radius: 999px; padding: 10px 18px; text-decoration: none; }
   a:hover { border-color: #3b82f6; }
+  @media (prefers-color-scheme: light) {
+    body { color: #0f172a; background: radial-gradient(900px 600px at 80% -10%, rgba(37, 99, 235, .12), transparent 60%), #f4f6fb; }
+    .m, a { color: #0e7490; } p { color: #475569; } a { border-color: rgba(15, 23, 42, .18); }
+  }
 </style>
 </head>
 <body>
