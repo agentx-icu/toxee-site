@@ -21,7 +21,7 @@ A static site (no third-party fonts or trackers) in English and 简体中文:
 | `tools/check_release.py` | Fails when the checked-in release info (links, file names, sizes and dates in `index.html`, the `FALLBACK` block in `site.js`, the JSON-LD `softwareVersion`) no longer matches the latest release. |
 | `tools/og.html` | Template for the 1200×630 social preview images `assets/img/{en,zh}/og.jpg`. |
 | `404.html` | Bilingual not-found page with absolute links (GitHub Pages serves it for any missing path). |
-| `assets/css/site.css` | Styles. |
+| `assets/css/site.css` | Styles. Dark by default, light when the system asks for it (`prefers-color-scheme`); colours that differ between the two are tokens on `:root`, and the app-UI illustrations and terminals keep the dark look in both. |
 | `assets/js/site.js` | Language toggle, the phone menu, the full-size screenshot viewer, tabs, OS detection, and the download list. |
 | `assets/img/{en,zh}/` | App screenshots per language, from `toxee/doc/product/assets`, converted to WebP (`cwebp -q 82 -m 6 in.png -o out.webp`). Keep the `width` / `height` attributes in `index.html` equal to the image size. |
 | `CNAME`, `.nojekyll` | GitHub Pages custom domain and raw static serving. |
