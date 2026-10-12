@@ -6,6 +6,7 @@ one at the site root. The pages under /en/ and /zh/ are the same page pinned
 to one language, so each language has its own shareable, indexable URL.
 Re-run after every edit to index.html:  python3 tools/build_lang_pages.py
 """
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -23,6 +24,7 @@ LANGS = {
         "og_title": "toxee — 无服务器。真隐私。属于你。",
         "og_description": "Tox 点对点网络的现代聊天客户端。没有服务器、无需手机号，端到端加密。",
         "description": "toxee 是基于 Tox 点对点网络的免费开源聊天应用。没有服务器、无需手机号，消息、文件、群聊与通话全程端到端加密，支持 Windows、macOS、Linux、Android 与 iOS。",
+        "ld_description": "基于 Tox 点对点网络的免费开源聊天应用。没有服务器、无需手机号，消息、文件、群聊与通话全程端到端加密。",
     },
 }
 
@@ -61,7 +63,13 @@ def build(src, lang, cfg):
         f'<link rel="canonical" href="{SITE}{lang}/">',
     )
     out = replace_once(out, f'<meta property="og:url" content="{SITE}">', f'<meta property="og:url" content="{SITE}{lang}/">')
-    out = out.replace("assets/img/en/quiet-modern.webp\">\n<meta name=\"twitter", f"assets/img/{lang}/quiet-modern.webp\">\n<meta name=\"twitter")
+    out = replace_once(out, f'content="{SITE}assets/img/en/og.jpg"', f'content="{SITE}assets/img/{lang}/og.jpg"')
+    # Structured data: this page's URL, language and screenshot.
+    out = replace_once(out, f'"url": "{SITE}"', f'"url": "{SITE}{lang}/"')
+    out = replace_once(out, '"inLanguage": "en"', f'"inLanguage": "{cfg["html_lang"]}"')
+    out = replace_once(out, f'"screenshot": "{SITE}assets/img/en/og.jpg"', f'"screenshot": "{SITE}assets/img/{lang}/og.jpg"')
+    if cfg.get("ld_description"):
+        out = re.sub(r'("description": ")[^"]*(")', lambda m: m[1] + cfg["ld_description"] + m[2], out, count=1)
     # Relative URLs move one directory down.
     for attr in ("href", "src"):
         out = out.replace(f'{attr}="assets/', f'{attr}="../assets/')

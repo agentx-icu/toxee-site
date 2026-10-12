@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Social preview template, rendered to assets/img/{en,zh}/og.jpg at 1200x630.
+     Open as tools/og.html?lang=en or ?lang=zh; see README "Social preview". -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: ui-sans-serif, -apple-system, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #e6ecf7; position: relative;
+    background:
+      radial-gradient(900px 600px at 85% -10%, rgba(37, 99, 235, .32), transparent 60%),
+      radial-gradient(700px 500px at -10% 90%, rgba(8, 47, 112, .45), transparent 60%),
+      #070b14;
+  }
+  .copy { position: absolute; left: 72px; top: 0; bottom: 0; width: 470px; display: flex; flex-direction: column; justify-content: center; }
+  .brand { display: flex; align-items: center; gap: 16px; font-size: 38px; font-weight: 700; }
+  .brand img { width: 64px; height: 64px; border-radius: 14px; }
+  .eyebrow { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 18px; letter-spacing: .16em; color: #67e8f9; text-transform: uppercase; margin: 34px 0 10px; }
+  h1 { font-family: ui-serif, "New York", Georgia, "Songti SC", serif; font-weight: 600; font-size: 66px; line-height: 1.04; margin: 0; }
+  h1 em { font-style: italic; color: #3b82f6; text-shadow: 0 0 34px rgba(59, 130, 246, .45); }
+  p { font-size: 24px; color: #9aabc3; margin: 22px 0 0; line-height: 1.45; }
+  .url { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 20px; color: #67e8f9; margin-top: 26px; }
+  .shot { position: absolute; left: 580px; top: 70px; width: 700px; border-radius: 16px; overflow: hidden;
+          box-shadow: 0 30px 90px rgba(2, 6, 16, .8), 0 0 0 1px rgba(148, 163, 184, .28); transform: rotate(-1.2deg); }
+  .shot img { display: block; width: 100%; }
+  [data-l] { display: none; }
+  html[data-lang="en"] [data-l="en"], html[data-lang="zh"] [data-l="zh"] { display: revert; }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <div class="brand"><img src="../assets/img/app_icon.png" alt="">toxee</div>
+    <div class="eyebrow" data-l="en">peer-to-peer messenger</div>
+    <div class="eyebrow" data-l="zh">点对点通讯</div>
+    <h1 data-l="en">Serverless.<br>Private.<br><em>Yours.</em></h1>
+    <h1 data-l="zh">无服务器。<br>真隐私。<br><em>属于你。</em></h1>
+    <p data-l="en">Free, open-source chat for the Tox network.</p>
+    <p data-l="zh">基于 Tox 网络的免费开源聊天应用。</p>
+    <div class="url">toxee.agentx.icu</div>
+  </div>
+  <div class="shot"><img id="shot" alt=""></div>
+  <script>
+    var l = /[?&]lang=zh\b/.test(location.search) ? 'zh' : 'en';
+    document.documentElement.setAttribute('data-lang', l);
+    document.getElementById('shot').src = '../assets/img/' + l + '/quiet-modern.webp';
+  </script>
+</body>
+</html>
