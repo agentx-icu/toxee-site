@@ -1,0 +1,28 @@
+name: check
+
+# Checks that en/ and zh/ were regenerated from index.html, and that the
+# checked-in release fallback matches the latest toxee release. The daily
+# run catches a new release that the page has not been updated for.
+on:
+  push:
+    branches: [master]
+  pull_request:
+  schedule:
+    - cron: '29 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generated pages are up to date
+        run: |
+          python3 tools/build_lang_pages.py
+          git diff --exit-code -- en zh || { echo "Run python3 tools/build_lang_pages.py and commit en/ and zh/."; exit 1; }
+      - run: python3 tools/check_release.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

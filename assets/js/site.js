@@ -69,6 +69,86 @@
     });
   });
 
+  /* ---------------- mobile menu ---------------- */
+
+  // Below 1060px the section links fold into a menu button.
+  var nav = $(".nav"), menuBtn = document.getElementById("menuBtn");
+  if (nav && menuBtn) {
+    var setMenu = function (open) {
+      nav.classList.toggle("open", open);
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    menuBtn.hidden = false;
+    menuBtn.addEventListener("click", function () { setMenu(!nav.classList.contains("open")); });
+    $$("#navLinks a").forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+    document.addEventListener("click", function (e) { if (!nav.contains(e.target)) setMenu(false); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); menuBtn.focus(); }
+    });
+    window.matchMedia("(min-width: 1061px)").addEventListener("change", function () { setMenu(false); });
+  }
+
+  /* ---------------- screenshot viewer ---------------- */
+
+  // Screenshots open full size in a <dialog>; arrows and swipes step through
+  // the group (one gallery pane or one feature figure) the image belongs to.
+  var shots = $$(".gallery img, .duo img, .phone-duo img");
+  if (shots.length && window.HTMLDialogElement) {
+    var box = document.createElement("dialog");
+    box.className = "lightbox";
+    box.innerHTML = '<figure><img alt=""><figcaption></figcaption></figure>' +
+      '<button type="button" class="lb-btn lb-close">\u00d7</button>' +
+      '<button type="button" class="lb-btn lb-prev">\u2039</button><button type="button" class="lb-btn lb-next">\u203a</button>';
+    document.body.appendChild(box);
+    var boxImg = $("img", box), boxCap = $("figcaption", box), group = [], at = 0;
+    // The caption is the image's alt text, or else its figure's visible caption.
+    var caption = function (img) {
+      var fig = img.closest("figure"), cap = fig && $("figcaption", fig);
+      return img.alt || (cap ? cap.innerText.trim() : "");
+    };
+    var show = function (i) {
+      at = (i + group.length) % group.length;
+      boxImg.src = group[at].currentSrc || group[at].src;
+      boxImg.alt = caption(group[at]);
+      boxCap.textContent = boxImg.alt;
+      box.classList.toggle("single", group.length < 2);
+    };
+    var step = function (d) { if (group.length > 1) show(at + d); };
+    shots.forEach(function (img) {
+      img.tabIndex = 0;
+      img.setAttribute("role", "button");
+      var open = function () {
+        group = $$("img", img.closest(".gallery, .duo, .phone-duo"));
+        show(group.indexOf(img));
+        var zh = lang() === "zh";
+        $(".lb-close", box).setAttribute("aria-label", zh ? "关闭" : "Close");
+        $(".lb-prev", box).setAttribute("aria-label", zh ? "上一张" : "Previous");
+        $(".lb-next", box).setAttribute("aria-label", zh ? "下一张" : "Next");
+        box.showModal();
+      };
+      img.addEventListener("click", open);
+      img.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+      });
+    });
+    $(".lb-close", box).addEventListener("click", function () { box.close(); });
+    $(".lb-prev", box).addEventListener("click", function () { step(-1); });
+    $(".lb-next", box).addEventListener("click", function () { step(1); });
+    box.addEventListener("click", function (e) { if (e.target === box || e.target.tagName === "FIGURE") box.close(); });
+    box.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") step(1);
+      else if (e.key === "ArrowLeft") step(-1);
+    });
+    var x0 = null;
+    box.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+    });
+  }
+
   /* ---------------- tabs ---------------- */
 
   $$("[role=tablist]").forEach(function (list) {
