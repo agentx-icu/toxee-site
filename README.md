@@ -23,7 +23,7 @@ A static site (no third-party fonts or trackers) in English and 简体中文:
 | `404.html` | Bilingual not-found page with absolute links (GitHub Pages serves it for any missing path). |
 | `assets/css/site.css` | Styles. |
 | `assets/js/site.js` | Language toggle, the phone menu, the full-size screenshot viewer, tabs, OS detection, and the download list. |
-| `assets/img/{en,zh}/` | App screenshots per language (copied from `toxee/doc/product/assets`). |
+| `assets/img/{en,zh}/` | App screenshots per language, from `toxee/doc/product/assets`, converted to WebP (`cwebp -q 82 -m 6 in.png -o out.webp`). Keep the `width` / `height` attributes in `index.html` equal to the image size. |
 | `CNAME`, `.nojekyll` | GitHub Pages custom domain and raw static serving. |
 | `.github/workflows/pages.yml` | Deploys the repository root with GitHub Pages on every push to `master`. |
 | `.github/workflows/check.yml` | On pushes, pull requests and daily: fails if `en/` / `zh/` were not regenerated, or if `tools/check_release.py` finds stale release info. |
