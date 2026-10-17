@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://toxee.agentx.icu/sitemap.xml
