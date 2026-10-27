@@ -7,19 +7,19 @@
   // Used until (or instead of, when GitHub is unreachable) the live release
   // lookup below. Update alongside each toxee release.
   var FALLBACK = {
-    version: "0.3.1",
-    tag: "v0.3.1",
-    date: "2026-09-16",
+    version: "0.4.0",
+    tag: "v0.4.0",
+    date: "2026-10-18",
     assets: {
-      "Android-arm64.apk": [69756642, "1b8b1a579468ca9adf5a5688712d2da9b85d0bea3b6f4ea1addd63053ce7e38c"],
-      "Darwin-arm64.pkg": [47223406, "efee003b8eee16cb674ab5c1466d137c21bc5021212e9096f5c69b019798b3b3"],
-      "Darwin-x86_64.pkg": [47405904, "1571ede00598ba6c86f471563a8075c093226aebd3fd86059d120c33309463a2"],
-      "Linux-aarch64.deb": [23274150, "fe04babc28a41253c2411acb72e15952797136b5c8ebbc6b48d4d985cdab9ee9"],
-      "Linux-aarch64.rpm": [17861133, "ce4e9ec708603d022849ce255777a98e46ca2d3a6b14f2c16e65fb0d6519b338"],
-      "Linux-x86_64.deb": [24134980, "11a14214fbd47f5020c1488bbe1b8d7272393300e85f3f8771d9de0092ceaae8"],
-      "Linux-x86_64.rpm": [18866481, "1e3576b5f42bf7ee0a5288e7b2abd53e471cfa6d5293100eff88797c23654a8d"],
-      "Windows-AMD64.msi": [30104276, "cfe33b509a7b61f12df1fe688d36fcd9f5ba661e5635505ce34bd5927b2ee0de"],
-      "Windows-ARM64.msi": [29928147, "d0af41c8134cabafae471bbd627bb62402be99f261ec48732b9ec6aa62c9ba41"]
+      "Android-arm64.apk": [70617812, "d2d5f9c38e02fd235a13b894f4f9639b90c0a3b861a70e68c13edca566440db7"],
+      "Darwin-arm64.pkg": [45981205, "39d7f4c6420edb57a7c87b177907e556a10f16f1809ff98802e47d6c981e5ff4"],
+      "Darwin-x86_64.pkg": [46188197, "e25209dfa68cd3c0c962f754f9c6e1c3e2451379341a1d2932eeb57701948dbf"],
+      "Linux-aarch64.deb": [22715330, "ac1061d0b28a2ebf210cbfcb9c33925be15287d0ad4148953c1fa89680358d56"],
+      "Linux-aarch64.rpm": [17292365, "893fda5fa384c36d404de02a2992d4921ef4b4b41ec1733f4dfc5029f761c2cf"],
+      "Linux-x86_64.deb": [23644424, "0ec77afbf315869b62927ec35473e4cd4f12571492cc1d15f4f24a20a6a6ba18"],
+      "Linux-x86_64.rpm": [18376885, "3a7fc7d1c922be5c27e0504dc79225275832c413b73dca303bed6416ca592bc4"],
+      "Windows-AMD64.msi": [29805675, "3fa036623f8f1828df4816d847eee960fbb0b43d23055970f48440c7fefbda9b"],
+      "Windows-ARM64.msi": [29645930, "3580d12b0fd13c3f4e21479a965b29c1c24549ac31f8d7008aea0149901aa945"]
     }
   };
 
