@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>toxee — Serverless, private, peer-to-peer chat</title>
-<meta name="description" content="toxee is a free, open-source chat app for the Tox peer-to-peer network. No servers, no phone number, end-to-end encrypted messages, files, groups and calls on Windows, macOS, Linux, Android and iOS.">
+<title>toxee — Experimental cross-platform Tox chat</title>
+<meta name="description" content="toxee is an experimental, open-source Tox client for phone and desktop. Exchange encrypted messages, files and one-to-one calls. Both clients must be running and reachable.">
 <meta name="theme-color" content="#f4f6fb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#070b14" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://toxee.agentx.icu/">
@@ -15,8 +15,8 @@
 <link rel="apple-touch-icon" href="assets/img/app_icon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://toxee.agentx.icu/">
-<meta property="og:title" content="toxee — Serverless. Private. Yours.">
-<meta property="og:description" content="A modern chat client for the Tox P2P network. No servers, no phone numbers, end-to-end encrypted.">
+<meta property="og:title" content="toxee — Experimental Tox chat for phone and desktop">
+<meta property="og:description" content="An experimental cross-platform Tox client. Local identities, encrypted conversations, and clear platform limits.">
 <meta property="og:image" content="https://toxee.agentx.icu/assets/img/en/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,7 +28,7 @@
   "name": "toxee",
   "url": "https://toxee.agentx.icu/",
   "inLanguage": "en",
-  "description": "A free, open-source chat app for the Tox peer-to-peer network. No servers and no phone number; end-to-end encrypted messages, files, groups and calls.",
+  "description": "An experimental, open-source client for the Tox peer-to-peer network. Local identities, encrypted messages, files and one-to-one calls.",
   "applicationCategory": "CommunicationApplication",
   "operatingSystem": "Windows, macOS, Linux, Android, iOS",
   "softwareVersion": "0.4.0",
@@ -87,12 +87,13 @@
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow rise d1"><span class="en">peer-to-peer messenger — no middlemen</span><span class="zh">点对点通讯 — 没有中间人</span></div>
-      <h1 class="rise d2"><span class="en">Serverless.<br>Private.<br><em>Yours.</em></span><span class="zh">无服务器。<br>真隐私。<br><em>属于你。</em></span></h1>
+      <div class="eyebrow rise d1"><span class="en">experimental cross-platform Tox client</span><span class="zh">实验性跨平台 Tox 客户端</span></div>
+      <h1 class="rise d2"><span class="en">Your identity.<br>Your friends.<br><em>Direct.</em></span><span class="zh">你的身份。<br>你的朋友。<br><em>点对点。</em></span></h1>
       <p class="lead rise d3">
-        <span class="en">toxee is a free, open-source chat app for the Tox network. Messages, files and calls travel peer to peer, end-to-end encrypted. There is no central server holding your account or messages that could be breached, subpoenaed or shut down, and you don't need a phone number or an email address.</span>
-        <span class="zh">toxee 是一款基于 Tox 网络的免费开源聊天应用。消息、文件与通话在设备之间点对点传输，全程端到端加密——没有存放你账号和消息、可被入侵、调取或关停的中心服务器，也不需要手机号或邮箱。</span>
+        <span class="en">Try Tox on phone and desktop with an experimental, open-source client. Create your identity locally, add a friend and exchange end-to-end encrypted messages, files and one-to-one calls. No phone number or email is required.</span>
+        <span class="zh">用实验性开源客户端，在手机和桌面体验 Tox。本地创建身份、添加一位朋友，互发端到端加密的消息与文件，尝试一对一通话。无需手机号或邮箱。</span>
       </p>
+      <p class="hero-expectations rise d4"><span class="en">Experimental software: keep backups. Both apps must be running and reachable; phone background delivery is limited. <a href="#before-download">Check your platform ↓</a></span><span class="zh">实验性软件，请保留备份。双方需要同时运行且网络可达，手机后台收信存在限制。<a href="#before-download">先看平台范围 ↓</a></span></p>
       <div class="cta-row rise d4">
         <a class="btn btn-blue btn-dl" id="hero-dl" href="#download">
           <span class="row">
@@ -110,14 +111,21 @@
       </div>
       <a class="badge rise d5" data-release-link href="https://github.com/agentx-icu/toxee/releases/tag/v0.4.0"><b aria-hidden="true">●</b><span class="en">latest</span><span class="zh">最新版本</span> <span data-version>v0.4.0</span> · <span data-release-date>2026-10-18</span></a>
     </div>
-    <div class="hero-shot rise d3">
+    <figure class="hero-shot rise d3">
       <div class="frame">
-        <img data-shot="quiet-modern.webp" src="assets/img/en/quiet-modern.webp" width="1586" height="992" fetchpriority="high"
-             data-alt-en="toxee on desktop and mobile: a conversation list and a chat window side by side"
-             data-alt-zh="toxee 桌面端与手机端：会话列表与聊天窗口并排"
-             alt="toxee on desktop and mobile: a conversation list and a chat window side by side">
+        <img data-shot="desktop/c2c.webp" src="assets/img/en/desktop/c2c.webp" width="1400" height="909" fetchpriority="high"
+             data-alt-en="Captured toxee desktop application showing a sample one-to-one conversation"
+             data-alt-zh="toxee 桌面应用实拍界面，展示示例单聊"
+             alt="Captured toxee desktop application showing a sample one-to-one conversation">
       </div>
-    </div>
+      <div class="frame hero-phone">
+        <img data-shot="ios/c2c.webp" src="assets/img/en/ios/c2c.webp" width="402" height="874"
+             data-alt-en="Captured toxee iPhone application showing the sample conversation"
+             data-alt-zh="toxee iPhone 应用实拍界面，展示同一示例会话"
+             alt="Captured toxee iPhone application showing the sample conversation">
+      </div>
+      <figcaption><span class="en">Captured app screens · sample conversations. Appearance may change between releases.</span><span class="zh">应用实拍界面 · 示例会话，外观可能随版本变化。</span></figcaption>
+    </figure>
   </div>
 
   <div class="stats">
@@ -169,7 +177,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow"><span class="en">02 — what it does</span><span class="zh">02 — 功能详解</span></div>
-      <h2><span class="en">Everything you expect from a chat app, minus the server.</span><span class="zh">聊天应用该有的都有，唯独没有服务器。</span></h2>
+      <h2><span class="en">Messages, files and calls over Tox.</span><span class="zh">通过 Tox 互发消息、文件和通话。</span></h2>
       <p><span class="en">toxee pairs the Tox protocol with a polished, modern interface built in Flutter. Here's what's inside.</span><span class="zh">toxee 把 Tox 协议与基于 Flutter 的精致现代界面结合在一起。下面逐一介绍。</span></p>
     </div>
 
@@ -418,7 +426,7 @@
     <div class="sec-head">
       <div class="eyebrow"><span class="en">03 — every screen</span><span class="zh">03 — 每一块屏幕</span></div>
       <h2><span class="en">One app, from phone to desktop.</span><span class="zh">一个应用，从手机到桌面。</span></h2>
-      <p><span class="en">The same Flutter codebase adapts to each form factor: a master–detail layout on desktop and tablet, a focused one-handed layout on phones.</span><span class="zh">同一套 Flutter 代码适配各种尺寸：桌面与平板是主从分栏布局，手机是专注的单手布局。</span></p>
+      <p><span class="en">Captured application screens with sample conversations show the desktop, tablet and phone layouts. Their appearance may change between releases.</span><span class="zh">应用实拍界面使用示例会话，展示桌面、平板和手机布局，外观可能随版本变化。</span></p>
     </div>
     <div class="tabs" role="tablist" aria-label="Platform">
       <button class="tab" role="tab" aria-selected="true" aria-controls="g-desktop" id="t-desktop" data-key="desktop" type="button"><span class="en">Desktop</span><span class="zh">桌面</span></button>
@@ -462,6 +470,23 @@
       <div class="eyebrow"><span class="en">04 — download</span><span class="zh">04 — 下载</span></div>
       <h2><span class="en">Get toxee for your device.</span><span class="zh">为你的设备下载 toxee。</span></h2>
       <p><span class="en">Free, no account needed. All packages are built by CI from the public source and published on GitHub Releases.</span><span class="zh">免费，无需注册。所有安装包都由 CI 从公开源码构建，发布在 GitHub Releases。</span></p>
+    </div>
+    <div class="download-expectations" id="before-download">
+      <h3><span class="en">Before you install</span><span class="zh">安装前先了解</span></h3>
+      <p><span class="en">toxee is experimental. Keep an exported backup before upgrading. Messages wait on the sender's device until both clients are running and reachable. Notifications are local alerts, not a server delivery service.</span><span class="zh">toxee 仍为实验性软件，升级前请保留导出的备份。双方同时运行且网络可达后才能投递，等待中的消息保存在发送方设备上。通知是本地提醒，不是服务器代收服务。</span></p>
+      <div class="platform-scroll" role="region" tabindex="0" aria-labelledby="platform-scope-caption">
+        <table class="platform-scope">
+          <caption id="platform-scope-caption"><span class="en">Current feature scope · package choices below</span><span class="zh">当前功能范围 · 安装包选择见下方</span></caption>
+          <thead><tr><th scope="col"><span class="en">Platform</span><span class="zh">平台</span></th><th scope="col"><span class="en">Chat &amp; files</span><span class="zh">聊天与文件</span></th><th scope="col"><span class="en">Calls &amp; availability</span><span class="zh">通话与接收条件</span></th></tr></thead>
+          <tbody>
+            <tr><th scope="row">macOS</th><td><span class="en">Direct and group chat, files</span><span class="zh">单聊、群聊与文件</span></td><td><span class="en">One-to-one voice; send and receive camera video. Keep the app running.</span><span class="zh">一对一语音，可收发摄像头画面。需要保持应用运行。</span></td></tr>
+            <tr><th scope="row">Windows / Linux</th><td><span class="en">Direct and group chat, files</span><span class="zh">单聊、群聊与文件</span></td><td><span class="en">One-to-one voice; receive camera video. Camera sending is unavailable.</span><span class="zh">一对一语音，可接收摄像头画面；不能发送摄像头画面。</span></td></tr>
+            <tr><th scope="row">Android</th><td><span class="en">Direct and group chat, files</span><span class="zh">单聊、群聊与文件</span></td><td><span class="en">One-to-one voice and camera video. Background service may help, but OS/battery settings can stop it. A force-quit app cannot receive.</span><span class="zh">一对一语音与摄像头画面。后台服务有助于保活，系统与电池设置仍可能将其停止；强制退出后无法接收。</span></td></tr>
+            <tr><th scope="row">iOS / iPadOS</th><td><span class="en">Direct and group chat, files</span><span class="zh">单聊、群聊与文件</span></td><td><span class="en">Source build with Xcode; no App Store build yet. One-to-one voice and camera video. iOS may suspend background reception; keep it open while waiting.</span><span class="zh">需要 Xcode 源码构建，尚无 App Store 版本。一对一语音与摄像头画面；iOS 可能挂起后台收信，等待时请保持前台。</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><span class="en">First time? Follow <a href="https://github.com/agentx-icu/toxee/blob/master/doc/first-chat.md">your first conversation</a> to import an identity, add a friend, exchange text/files and check backup recovery.</span><span class="zh">第一次使用？按<a href="https://github.com/agentx-icu/toxee/blob/master/doc/first-chat.zh-CN.md">第一次聊天</a>导入身份、添加好友、互发文字与文件，再核对备份恢复。</span></p>
     </div>
     <div class="dl-meta">
       <span><span class="en">Version</span><span class="zh">版本</span> <b data-version>v0.4.0</b></span>
@@ -632,7 +657,7 @@
         <ol class="steps">
           <li><span class="en">Download the <b>APK</b> on your phone (or transfer it from your computer).</span><span class="zh">在手机上下载 <b>APK</b>（或从电脑传到手机）。</span></li>
           <li><span class="en">Open it. If Android asks, allow your browser or file manager to <b>install unknown apps</b> for this one install.</span><span class="zh">打开它。若系统提示，允许浏览器或文件管理器<b>安装未知应用</b>。</span></li>
-          <li><span class="en">After install, allow <b>notifications</b> so messages and incoming calls can reach you, and consider exempting toxee from battery optimization so it stays connected.</span><span class="zh">安装后请允许<b>通知</b>，以便接收消息和来电；建议将 toxee 加入电池优化白名单，保持在线连接。</span></li>
+          <li><span class="en">After install, allow <b>notifications</b> if you want local message and call alerts. Background service and battery settings can help maintain a connection, but cannot guarantee delivery or wake a force-quit app.</span><span class="zh">安装后可允许<b>通知</b>，显示本地消息与来电提示。后台服务与电池设置有助于保活，但不能保证投递，也无法唤醒被强制退出的应用。</span></li>
         </ol>
         <div class="term"><i># or sideload with adb</i>
 <b>adb install</b> <span data-file="Android-arm64.apk">toxee-0.4.0-Android-arm64.apk</span></div>
@@ -643,7 +668,7 @@
           <li><span class="en"><b>Create an account.</b> Choose a nickname and, ideally, a password. Your Tox ID is generated on your device; nothing is registered anywhere.</span><span class="zh"><b>创建账号。</b>填写昵称，建议同时设置密码。Tox ID 在你的设备上本地生成，不会注册到任何地方。</span></li>
           <li><span class="en"><b>Or bring an existing one.</b> Import a <code>.tox</code> profile from qTox or another client, restore a toxee <code>.zip</code> backup, or pair from a device that already has your account.</span><span class="zh"><b>或沿用已有账号。</b>导入 qTox 等客户端的 <code>.tox</code> 资料、恢复 toxee 的 <code>.zip</code> 备份，或从已登录的设备扫码配对。</span></li>
           <li><span class="en"><b>Share your ID.</b> Open your profile and show the QR code, or copy the 76-character Tox ID and send it to a friend.</span><span class="zh"><b>分享你的 ID。</b>打开个人资料展示二维码，或复制 76 位 Tox ID 发给朋友。</span></li>
-          <li><span class="en"><b>Add friends.</b> Paste or scan their Tox ID with a short message. They'll appear online as soon as they accept.</span><span class="zh"><b>添加好友。</b>粘贴或扫描对方的 Tox ID 并附上留言，对方通过后即会显示在线。</span></li>
+          <li><span class="en"><b>Add friends.</b> Paste or scan their Tox ID with a short message. After acceptance, keep both clients open and wait for the peer connection.</span><span class="zh"><b>添加好友。</b>粘贴或扫描对方的 Tox ID 并附上留言，对方通过后，保持两个客户端打开并等待连接。</span></li>
           <li><span class="en"><b>Back up.</b> Export your account in Settings and keep it somewhere safe. Without a server, a backup is the only way to recover your identity.</span><span class="zh"><b>做好备份。</b>在设置中导出账号并妥善保存。没有服务器，备份是找回身份的唯一途径。</span></li>
         </ol>
         <div class="callout"><b><span class="en">Heads-up:</span><span class="zh">提示：</span></b> <span class="en">toxee is experimental software. Behaviour may change between releases. Please report bugs and rough edges on <a href="https://github.com/agentx-icu/toxee/issues" rel="noopener">GitHub Issues</a>.</span><span class="zh">toxee 仍处于实验阶段，各版本间行为可能变化。欢迎在 <a href="https://github.com/agentx-icu/toxee/issues" rel="noopener">GitHub Issues</a> 反馈问题与建议。</span></div>
@@ -735,7 +760,7 @@
     <div class="foot">
       <div>
         <a class="brand" href="#top"><img src="assets/img/app_icon.png" alt="" width="30" height="30"><span>toxee</span></a>
-        <p class="blurb"><span class="en">A modern, open-source client for the Tox peer-to-peer network.</span><span class="zh">Tox 点对点网络的现代开源客户端。</span></p>
+        <p class="blurb"><span class="en">An experimental, open-source Tox client for phone and desktop.</span><span class="zh">手机与桌面上的实验性开源 Tox 客户端。</span></p>
       </div>
       <div>
         <h4><span class="en">Product</span><span class="zh">产品</span></h4>

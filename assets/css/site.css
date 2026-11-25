@@ -508,3 +508,36 @@ footer{margin-top:120px;border-top:1px solid var(--line);padding:44px 0 56px;col
   .foot{grid-template-columns:1fr}
   section{padding-top:80px}
 }
+
+/* Captured app hero and expectations before package selection. */
+.hero-expectations{font-size:14px;line-height:1.65;color:var(--text-dim);margin-top:18px;max-width:42em}
+.hero-shot{padding:0 34px 60px 0}
+.hero-shot .hero-phone{position:absolute;width:25%;right:0;bottom:28px;border-radius:18px;transform:rotate(3deg)}
+.hero-shot figcaption{position:absolute;bottom:0;left:0;right:0;font-size:12px;line-height:1.5;color:var(--text-dim)}
+.download-expectations{margin:24px 0 30px;padding:22px;border:1px solid var(--line-strong);border-radius:var(--r);background:var(--surface)}
+.download-expectations h3{font-size:25px;margin-bottom:8px}
+.download-expectations p{font-size:15px;color:var(--text-dim)}
+.download-expectations p:last-child{margin-top:16px}
+.platform-scroll{overflow-x:auto;margin-top:18px}
+.platform-scope{width:100%;border-collapse:collapse;font-size:14px;line-height:1.6;text-align:left}
+.platform-scope caption{text-align:left;color:var(--text);font-weight:600;margin-bottom:10px}
+.platform-scope th,.platform-scope td{padding:12px 10px;vertical-align:top;border-bottom:1px solid var(--line)}
+.platform-scope th{color:var(--text);font-weight:600}
+.platform-scope td{color:var(--text-dim)}
+.platform-scope tbody th{min-width:118px}
+.platform-scope td:nth-child(2){min-width:148px}
+@media(max-width:600px){
+  .hero-shot{padding:0 22px 64px 0}
+  .hero-shot .hero-phone{width:25%;bottom:34px}
+  .hero-shot figcaption{font-size:11px}
+  .download-expectations{padding:16px}
+  .platform-scope{min-width:580px}
+}
+@media(max-width:600px){
+  /* Keep each platform's reception limits visible without horizontal scrolling. */
+  .platform-scope{min-width:0}
+  .platform-scope thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .platform-scope tr{display:grid;grid-template-columns:1fr;padding:10px 0;border-bottom:1px solid var(--line)}
+  .platform-scope th,.platform-scope td{display:block;padding:3px 0;border:0;min-width:0}
+  .platform-scope tbody th,.platform-scope td:nth-child(2){min-width:0}
+}

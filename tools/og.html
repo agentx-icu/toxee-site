@@ -22,7 +22,7 @@
   h1 em { font-style: italic; color: #3b82f6; text-shadow: 0 0 34px rgba(59, 130, 246, .45); }
   p { font-size: 24px; color: #9aabc3; margin: 22px 0 0; line-height: 1.45; }
   .url { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 20px; color: #67e8f9; margin-top: 26px; }
-  .shot { position: absolute; left: 580px; top: 70px; width: 700px; border-radius: 16px; overflow: hidden;
+  .shot { position: absolute; left: 580px; top: 130px; width: 700px; border-radius: 16px; overflow: hidden;
           box-shadow: 0 30px 90px rgba(2, 6, 16, .8), 0 0 0 1px rgba(148, 163, 184, .28); transform: rotate(-1.2deg); }
   .shot img { display: block; width: 100%; }
   [data-l] { display: none; }
@@ -32,19 +32,19 @@
 <body>
   <div class="copy">
     <div class="brand"><img src="../assets/img/app_icon.png" alt="">toxee</div>
-    <div class="eyebrow" data-l="en">peer-to-peer messenger</div>
-    <div class="eyebrow" data-l="zh">点对点通讯</div>
-    <h1 data-l="en">Serverless.<br>Private.<br><em>Yours.</em></h1>
-    <h1 data-l="zh">无服务器。<br>真隐私。<br><em>属于你。</em></h1>
-    <p data-l="en">Free, open-source chat for the Tox network.</p>
-    <p data-l="zh">基于 Tox 网络的免费开源聊天应用。</p>
+    <div class="eyebrow" data-l="en">experimental Tox client</div>
+    <div class="eyebrow" data-l="zh">实验性 Tox 客户端</div>
+    <h1 data-l="en">Your identity.<br>Your friends.<br><em>Direct.</em></h1>
+    <h1 data-l="zh">你的身份。<br>你的朋友。<br><em>点对点。</em></h1>
+    <p data-l="en">Experimental, open-source chat for phone and desktop.</p>
+    <p data-l="zh">手机与桌面上的实验性开源聊天应用。</p>
     <div class="url">toxee.agentx.icu</div>
   </div>
   <div class="shot"><img id="shot" alt=""></div>
   <script>
     var l = /[?&]lang=zh\b/.test(location.search) ? 'zh' : 'en';
     document.documentElement.setAttribute('data-lang', l);
-    document.getElementById('shot').src = '../assets/img/' + l + '/quiet-modern.webp';
+    document.getElementById('shot').src = '../assets/img/' + l + '/desktop/c2c.webp';
   </script>
 </body>
 </html>
