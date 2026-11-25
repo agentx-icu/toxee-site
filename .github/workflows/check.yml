@@ -1,22 +1,27 @@
 name: check
 
 # Checks that en/ and zh/ were regenerated from index.html, and that the
-# checked-in release fallback matches the latest toxee release. The daily
+# checked-in release fallback matches the latest toxee release. The weekly
 # run catches a new release that the page has not been updated for.
 on:
   push:
     branches: [master]
   pull_request:
   schedule:
-    - cron: '29 3 * * *'
+    - cron: '29 3 * * 1'
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - name: Generated pages are up to date

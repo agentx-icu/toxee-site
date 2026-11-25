@@ -28,7 +28,7 @@ A static site (no third-party fonts or trackers) in English and 简体中文:
 | `CNAME`, `.nojekyll` | GitHub Pages custom domain and raw static serving. |
 | `sitemap.xml`, `robots.txt` | Search-engine sitemap (`/`, `/en/`, `/zh/` with hreflang alternates) and the robots file pointing at it. Update both if pages are added. |
 | `.github/workflows/pages.yml` | Deploys the repository root with GitHub Pages on every push to `master`. |
-| `.github/workflows/check.yml` | On pushes, pull requests and daily: fails if `en/` / `zh/` were not regenerated, if `tools/check_site.py` finds a broken link or translation, or if `tools/check_release.py` finds stale release info. |
+| `.github/workflows/check.yml` | On pushes, pull requests and weekly: fails if `en/` / `zh/` were not regenerated, if `tools/check_site.py` finds a broken link or translation, or if `tools/check_release.py` finds stale release info. |
 
 ## Downloads
 
@@ -38,7 +38,7 @@ limits, blocked network), the page uses the `FALLBACK` block at the top of
 `site.js` and the static links in `index.html`. **After each toxee release,
 update `FALLBACK` and the hard-coded download links in `index.html`, and the JSON-LD `softwareVersion`, then regenerate `en/` and `zh/`** so visitors
 without API access still get the newest packages. `python3 tools/check_release.py`
-lists anything still out of date; the `check` workflow runs it every day.
+lists anything still out of date; the `check` workflow runs it every Monday.
 
 Package names are expected to follow `toxee-<version>-<Platform>-<arch>.<ext>`,
 matching the release workflow.
