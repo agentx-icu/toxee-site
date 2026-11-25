@@ -15,16 +15,16 @@ SITE = "https://toxee.agentx.icu/"
 LANGS = {
     "en": {
         "html_lang": "en",
-        "title": "toxee — Serverless, private, peer-to-peer chat",
+        "title": "toxee — Experimental cross-platform Tox chat",
         "description": None,  # keep the English description from index.html
     },
     "zh": {
         "html_lang": "zh-Hans",
-        "title": "toxee — 无服务器、真隐私的点对点聊天",
-        "og_title": "toxee — 无服务器。真隐私。属于你。",
-        "og_description": "Tox 点对点网络的现代聊天客户端。没有服务器、无需手机号，端到端加密。",
-        "description": "toxee 是基于 Tox 点对点网络的免费开源聊天应用。没有服务器、无需手机号，消息、文件、群聊与通话全程端到端加密，支持 Windows、macOS、Linux、Android 与 iOS。",
-        "ld_description": "基于 Tox 点对点网络的免费开源聊天应用。没有服务器、无需手机号，消息、文件、群聊与通话全程端到端加密。",
+        "title": "toxee — 实验性的跨平台 Tox 聊天",
+        "og_title": "toxee — 手机与桌面上的实验性 Tox 聊天",
+        "og_description": "实验性的跨平台 Tox 客户端。本地身份、加密会话与清楚的平台范围。",
+        "description": "toxee 是手机与桌面上的实验性开源 Tox 客户端。消息、文件与一对一通话端到端加密，双方需要同时运行且网络可达。",
+        "ld_description": "实验性的开源 Tox 点对点客户端，本地身份、加密消息、文件与一对一通话。",
     },
 }
 
@@ -44,7 +44,7 @@ def build(src, lang, cfg):
     )
     out = replace_once(
         out,
-        "<title>toxee — Serverless, private, peer-to-peer chat</title>",
+        "<title>toxee — Experimental cross-platform Tox chat</title>",
         f"<title>{cfg['title']}</title>",
     )
     if cfg["description"]:
@@ -52,9 +52,9 @@ def build(src, lang, cfg):
         _, rest = rest.split('">', 1)
         out = f'{head}<meta name="description" content="{cfg["description"]}">{rest}'
     if cfg.get("og_title"):
-        out = replace_once(out, '<meta property="og:title" content="toxee — Serverless. Private. Yours.">',
+        out = replace_once(out, '<meta property="og:title" content="toxee — Experimental Tox chat for phone and desktop">',
                            f'<meta property="og:title" content="{cfg["og_title"]}">')
-        out = replace_once(out, '<meta property="og:description" content="A modern chat client for the Tox P2P network. No servers, no phone numbers, end-to-end encrypted.">',
+        out = replace_once(out, '<meta property="og:description" content="An experimental cross-platform Tox client. Local identities, encrypted conversations, and clear platform limits.">',
                            f'<meta property="og:description" content="{cfg["og_description"]}">')
         out = out.replace('<meta property="og:type" content="website">', '<meta property="og:type" content="website">\n<meta property="og:locale" content="zh_CN">')
     out = replace_once(

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "repository": "agentx-icu/toxee",
+  "tag": "v0.4.0",
+  "version": "0.4.0",
+  "release_url": "https://github.com/agentx-icu/toxee/releases/tag/v0.4.0",
+  "published_at": "2026-10-18T11:55:10Z",
+  "draft": false,
+  "prerelease": false,
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/SHA256SUMS.txt",
+      "size": 861,
+      "sha256": "0137d2e8a368653003bf0d58798b3530ae8820b25de3ba83b6d3117f542b982e",
+      "platform": null,
+      "signature_status": "not_verified"
+    },
+    {
+      "name": "toxee-0.4.0-Android-arm64.apk",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/toxee-0.4.0-Android-arm64.apk",
+      "size": 70617812,
+      "sha256": "d2d5f9c38e02fd235a13b894f4f9639b90c0a3b861a70e68c13edca566440db7",
+      "platform": "android",
+      "signature_status": "not_verified"
+    },
+    {
+      "name": "toxee-0.4.0-Darwin-arm64.pkg",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/toxee-0.4.0-Darwin-arm64.pkg",
+      "size": 45981205,
+      "sha256": "39d7f4c6420edb57a7c87b177907e556a10f16f1809ff98802e47d6c981e5ff4",
+      "platform": "macos",
+      "signature_status": "not_verified"
+    },
+    {
+      "name": "toxee-0.4.0-Darwin-x86_64.pkg",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/toxee-0.4.0-Darwin-x86_64.pkg",
+      "size": 46188197,
+      "sha256": "e25209dfa68cd3c0c962f754f9c6e1c3e2451379341a1d2932eeb57701948dbf",
+      "platform": "macos",
+      "signature_status": "not_verified"
+    },
+    {
+      "name": "toxee-0.4.0-Linux-aarch64.deb",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/toxee-0.4.0-Linux-aarch64.deb",
+      "size": 22715330,
+      "sha256": "ac1061d0b28a2ebf210cbfcb9c33925be15287d0ad4148953c1fa89680358d56",
+      "platform": "linux",
+      "signature_status": "not_verified"
+    },
+    {
+      "name": "toxee-0.4.0-Linux-aarch64.rpm",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/toxee-0.4.0-Linux-aarch64.rpm",
+      "size": 17292365,
+      "sha256": "893fda5fa384c36d404de02a2992d4921ef4b4b41ec1733f4dfc5029f761c2cf",
+      "platform": "linux",
+      "signature_status": "not_verified"
+    },
+    {
+      "name": "toxee-0.4.0-Linux-x86_64.deb",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/toxee-0.4.0-Linux-x86_64.deb",
+      "size": 23644424,
+      "sha256": "0ec77afbf315869b62927ec35473e4cd4f12571492cc1d15f4f24a20a6a6ba18",
+      "platform": "linux",
+      "signature_status": "not_verified"
+    },
+    {
+      "name": "toxee-0.4.0-Linux-x86_64.rpm",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/toxee-0.4.0-Linux-x86_64.rpm",
+      "size": 18376885,
+      "sha256": "3a7fc7d1c922be5c27e0504dc79225275832c413b73dca303bed6416ca592bc4",
+      "platform": "linux",
+      "signature_status": "not_verified"
+    },
+    {
+      "name": "toxee-0.4.0-Windows-AMD64.msi",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/toxee-0.4.0-Windows-AMD64.msi",
+      "size": 29805675,
+      "sha256": "3fa036623f8f1828df4816d847eee960fbb0b43d23055970f48440c7fefbda9b",
+      "platform": "windows",
+      "signature_status": "not_verified"
+    },
+    {
+      "name": "toxee-0.4.0-Windows-ARM64.msi",
+      "url": "https://github.com/agentx-icu/toxee/releases/download/v0.4.0/toxee-0.4.0-Windows-ARM64.msi",
+      "size": 29645930,
+      "sha256": "3580d12b0fd13c3f4e21479a965b29c1c24549ac31f8d7008aea0149901aa945",
+      "platform": "windows",
+      "signature_status": "not_verified"
+    }
+  ]
+}

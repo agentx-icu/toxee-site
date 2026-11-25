@@ -1,0 +1,89 @@
+name: Sync published release
+on:
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+concurrency:
+  group: release-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch published inventory and prepare its branch
+        id: prepare
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          python3 tools/release_manifest.py fetch --output "$RUNNER_TEMP/release-manifest.json"
+          tag="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["tag"])' "$RUNNER_TEMP/release-manifest.json")"
+          branch="automation/release-$tag"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null; then
+            git fetch origin "refs/heads/$branch:refs/remotes/origin/$branch"
+            git switch -c "$branch" "origin/$branch"
+            # Preserve existing review work and update it without force-pushing.
+            git merge --no-edit "origin/$DEFAULT_BRANCH"
+          else
+            git switch -c "$branch"
+          fi
+      - name: Synchronize the published stable release
+        run: python3 tools/release_manifest.py sync --input "$RUNNER_TEMP/release-manifest.json"
+      - name: Generate and validate static pages
+        run: |
+          python3 tools/build_lang_pages.py
+          python3 tools/check_site.py
+          python3 tools/release_manifest.py check --input release-manifest.json
+      - name: Open or refresh the synchronization pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_BRANCH: ${{ steps.prepare.outputs.branch }}
+          RELEASE_TAG: ${{ steps.prepare.outputs.tag }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          ensure_site_check() {
+            release_check_sha="$(git rev-parse "origin/$RELEASE_BRANCH")"
+            release_check_count="$(gh run list --workflow check.yml --branch "$RELEASE_BRANCH" --commit "$release_check_sha" --limit 1 --json databaseId --jq length)"
+            if [[ "$release_check_count" == 0 ]]; then
+              gh workflow run check.yml --ref "$RELEASE_BRANCH"
+            fi
+          }
+          existing="$(gh pr list --head "$RELEASE_BRANCH" --state open --json number --jq '.[0].number // empty')"
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add -u
+            git add release-manifest.json
+            git commit -m "Sync website downloads with $RELEASE_TAG"
+          elif git diff --quiet "origin/$DEFAULT_BRANCH" HEAD; then
+            exit 0
+          elif [[ -n "$existing" ]]; then
+            ensure_site_check
+            exit 0
+          fi
+          # Also retries a prior push whose PR creation failed, with no new edits.
+          git push origin "HEAD:refs/heads/$RELEASE_BRANCH"
+          if [[ -z "$existing" ]]; then
+            cat > "$RUNNER_TEMP/release-sync.md" <<'BODY'
+          Synchronize download links, filenames, sizes, checksums, release dates and generated language pages from the application's published release inventory.
+
+          The page keeps working without JavaScript or GitHub API access. Checksums do not establish a trusted publisher; signature evidence remains explicit in the manifest.
+
+          Validation: generated pages, static site checks and offline release-manifest comparison passed in this workflow.
+          BODY
+            gh pr create --head "$RELEASE_BRANCH" --title "Sync website downloads with $RELEASE_TAG" --body-file "$RUNNER_TEMP/release-sync.md"
+          fi
+          # Token-created PRs do not trigger CI automatically; explicit dispatch does.
+          ensure_site_check
