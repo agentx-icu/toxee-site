@@ -37,10 +37,7 @@ A static site (no third-party fonts or trackers) in English and 简体中文:
 `site.js` asks the GitHub API for the latest toxee release and fills in the
 package links, sizes and SHA-256 digests. If the API is unreachable (rate
 limits, blocked network), the page uses the `FALLBACK` block at the top of
-`site.js` and the static links in `index.html`. **After each toxee release,
-update `FALLBACK` and the hard-coded download links in `index.html`, and the JSON-LD `softwareVersion`, then regenerate `en/` and `zh/`** so visitors
-without API access still get the newest packages. `python3 tools/check_release.py`
-lists anything still out of date; the `check` workflow runs it every day.
+`site.js` and the static links in `index.html`. After a published stable release, run `python3 tools/release_manifest.py sync` and regenerate the language pages, or use the automatic release-sync PR. The validated inventory updates links, filenames, sizes, dates, checksums and fallbacks together. If asset naming changes, review the `data-asset` / `data-file` attributes. See [release synchronization](RELEASE_SYNC.md). The existing daily `check_release.py` check still detects drift.
 
 Package names are expected to follow `toxee-<version>-<Platform>-<arch>.<ext>`,
 matching the release workflow.
