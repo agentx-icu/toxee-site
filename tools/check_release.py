@@ -42,7 +42,7 @@ def main():
     tag = rel['tag_name']
     version = tag.lstrip('v')
     date = rel['published_at'][:10]
-    assets = {a['name']: a for a in rel['assets']}
+    assets = {a['name']: a for a in rel['assets'] if a['name'] != 'release-manifest.json'}
     errors = []
 
     for v in set(re.findall(r'<(?:span|b)[^>]* data-version>([^<]+)<', src)):

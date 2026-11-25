@@ -1,5 +1,7 @@
 # toxee-site
 
+Release download metadata is generated from `release-manifest.json`. Use `python3 tools/release_manifest.py sync`, then regenerate language pages; [release synchronization](RELEASE_SYNC.md) documents the automatic PR workflow and offline checks.
+
 Official website for the experimental cross-platform Tox client [toxee](https://github.com/agentx-icu/toxee), served at
 **https://toxee.agentx.icu**.
 

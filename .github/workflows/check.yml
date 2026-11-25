@@ -28,3 +28,7 @@ jobs:
       - run: python3 tools/check_release.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release manifest and offline fallback
+        run: |
+          python3 -m unittest discover -s tools -p 'test_release*.py'
+          python3 tools/release_manifest.py check --input release-manifest.json
