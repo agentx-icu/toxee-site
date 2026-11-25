@@ -30,14 +30,14 @@ A static site (no third-party fonts or trackers) in English and 简体中文:
 | `CNAME`, `.nojekyll` | GitHub Pages custom domain and raw static serving. |
 | `sitemap.xml`, `robots.txt` | Search-engine sitemap (`/`, `/en/`, `/zh/` with hreflang alternates) and the robots file pointing at it. Update both if pages are added. |
 | `.github/workflows/pages.yml` | Deploys the repository root with GitHub Pages on every push to `master`. |
-| `.github/workflows/check.yml` | On pushes, pull requests and daily: fails if `en/` / `zh/` were not regenerated, if `tools/check_site.py` finds a broken link or translation, or if `tools/check_release.py` finds stale release info. |
+| `.github/workflows/check.yml` | On pushes, pull requests and weekly: fails if `en/` / `zh/` were not regenerated, if `tools/check_site.py` finds a broken link or translation, or if `tools/check_release.py` finds stale release info. |
 
 ## Downloads
 
 `site.js` asks the GitHub API for the latest toxee release and fills in the
 package links, sizes and SHA-256 digests. If the API is unreachable (rate
 limits, blocked network), the page uses the `FALLBACK` block at the top of
-`site.js` and the static links in `index.html`. After a published stable release, run `python3 tools/release_manifest.py sync` and regenerate the language pages, or use the automatic release-sync PR. The validated inventory updates links, filenames, sizes, dates, checksums and fallbacks together. If asset naming changes, review the `data-asset` / `data-file` attributes. See [release synchronization](RELEASE_SYNC.md). The existing daily `check_release.py` check still detects drift.
+`site.js` and the static links in `index.html`. After a published stable release, run `python3 tools/release_manifest.py sync` and regenerate the language pages, or use the automatic release-sync PR. The validated inventory updates links, filenames, sizes, dates, checksums and fallbacks together. If asset naming changes, review the `data-asset` / `data-file` attributes. See [release synchronization](RELEASE_SYNC.md). The existing weekly `check_release.py` check still detects drift.
 
 Package names are expected to follow `toxee-<version>-<Platform>-<arch>.<ext>`,
 matching the release workflow.

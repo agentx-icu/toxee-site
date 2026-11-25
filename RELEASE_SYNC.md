@@ -16,13 +16,13 @@ python3 tools/release_manifest.py check --input release-manifest.json
 python3 -m unittest discover -s tools -p 'test_release*.py'
 ```
 
-The offline check verifies the checked-in source and fallback against the manifest without contacting GitHub. Existing daily release checks still compare the public website source with GitHub. Runtime API access remains optional for visitors; the generated HTML/JavaScript fallback stays usable without it.
+The offline check verifies the checked-in source and fallback against the manifest without contacting GitHub. Existing weekly release checks still compare the public website source with GitHub. Runtime API access remains optional for visitors; the generated HTML/JavaScript fallback stays usable without it.
 
 For a saved, validated inventory, use `sync --input /absolute/path/release-manifest.json`. The synchronizer updates release labels/date, asset URLs/names/sizes, install commands, checksum lists, JSON-LD where present, and the JavaScript fallback. Historic screenshot captions are deliberately not rewritten as though the images came from a newer build.
 
 ## Automatic preparation
 
-`.github/workflows/release-sync.yml` runs daily and on manual dispatch, synchronizes the published application release, regenerates/checks the site, and opens or updates one `automation/release-vX.Y.Z` PR. Existing bot branches are reused without force-pushes; missing PR creation and check dispatch are retried after partial API failures. It requires repository Actions permissions to create branches and PRs; if organization policy disables PR creation, the run reports that failure and the generated update can be prepared with the command above. Merging remains an explicit repository action.
+`.github/workflows/release-sync.yml` runs weekly and on manual dispatch, synchronizes the published application release, regenerates/checks the site, and opens or updates one `automation/release-vX.Y.Z` PR. Existing bot branches are reused without force-pushes; missing PR creation and check dispatch are retried after partial API failures. It requires repository Actions permissions to create branches and PRs; if organization policy disables PR creation, the run reports that failure and the generated update can be prepared with the command above. Merging remains an explicit repository action.
 
 The application `.github/workflows/release-manifest.yml` refreshes inventories after publication/editing, or on manual dispatch for an existing release tag. Its normal package workflow also attaches an inventory after producing a draft/public release, so publication with the Actions token does not depend on triggering a second workflow.
 
